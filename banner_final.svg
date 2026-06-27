@@ -1,0 +1,156 @@
+<svg width="900" height="200" viewBox="0 0 900 200" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#040406"/>
+      <stop offset="50%" style="stop-color:#07080F"/>
+      <stop offset="100%" style="stop-color:#040406"/>
+    </linearGradient>
+
+    <!-- tri-color name gradient -->
+    <linearGradient id="nameGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%"   style="stop-color:#00FFFF">
+        <animate attributeName="offset" values="0;0.1;0" dur="6s" repeatCount="indefinite"/>
+      </stop>
+      <stop offset="50%"  style="stop-color:#FFFFFF"/>
+      <stop offset="100%" style="stop-color:#FF6B00">
+        <animate attributeName="offset" values="1;0.9;1" dur="6s" repeatCount="indefinite"/>
+      </stop>
+    </linearGradient>
+
+    <!-- glow filter -->
+    <filter id="glow" x="-20%" y="-30%" width="140%" height="160%">
+      <feGaussianBlur stdDeviation="4" result="b1"/>
+      <feGaussianBlur stdDeviation="10" result="b2"/>
+      <feMerge><feMergeNode in="b2"/><feMergeNode in="b1"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="glowSm" x="-10%" y="-20%" width="120%" height="140%">
+      <feGaussianBlur stdDeviation="2" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+
+    <!-- grid pattern -->
+    <pattern id="grid" x="0" y="0" width="44" height="44" patternUnits="userSpaceOnUse">
+      <path d="M44,0 L0,0 0,44" fill="none" stroke="rgba(0,255,255,0.04)" stroke-width="1"/>
+    </pattern>
+
+    <!-- scanlines -->
+    <pattern id="scan" x="0" y="0" width="900" height="4" patternUnits="userSpaceOnUse">
+      <rect y="0" width="900" height="1" fill="rgba(0,0,0,0.08)"/>
+    </pattern>
+
+    <!-- divider gradient -->
+    <linearGradient id="divGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%"   style="stop-color:transparent"/>
+      <stop offset="30%"  style="stop-color:#00FFFF"/>
+      <stop offset="50%"  style="stop-color:#FFFFFF"/>
+      <stop offset="70%"  style="stop-color:#FF6B00"/>
+      <stop offset="100%" style="stop-color:transparent"/>
+    </linearGradient>
+  </defs>
+
+  <!-- BG -->
+  <rect width="900" height="200" fill="url(#bg)" rx="10"/>
+  <rect width="900" height="200" fill="url(#grid)" rx="10"/>
+  <rect width="900" height="200" fill="url(#scan)" rx="10"/>
+
+  <!-- top/bottom glow borders -->
+  <rect x="0" y="0"   width="900" height="1.5" fill="url(#divGrad)" opacity="0.9"/>
+  <rect x="0" y="198" width="900" height="1.5" fill="url(#divGrad)" opacity="0.9"/>
+
+  <!-- corner brackets: cyan TL, orange TR, orange BL, cyan BR -->
+  <g filter="url(#glowSm)">
+    <path d="M18,10 L10,10 L10,28" stroke="#00FFFF" stroke-width="2" fill="none">
+      <animate attributeName="opacity" values=".3;1;.3" dur="2s" repeatCount="indefinite"/>
+    </path>
+    <path d="M882,10 L890,10 L890,28" stroke="#FF6B00" stroke-width="2" fill="none">
+      <animate attributeName="opacity" values=".3;1;.3" dur="2s" begin=".5s" repeatCount="indefinite"/>
+    </path>
+    <path d="M18,190 L10,190 L10,172" stroke="#FF6B00" stroke-width="2" fill="none">
+      <animate attributeName="opacity" values=".3;1;.3" dur="2s" begin="1s" repeatCount="indefinite"/>
+    </path>
+    <path d="M882,190 L890,190 L890,172" stroke="#00FFFF" stroke-width="2" fill="none">
+      <animate attributeName="opacity" values=".3;1;.3" dur="2s" begin="1.5s" repeatCount="indefinite"/>
+    </path>
+  </g>
+
+  <!-- circuit deco left -->
+  <g opacity="0.22" filter="url(#glowSm)">
+    <line x1="28" y1="58" x2="76" y2="58" stroke="#00FFFF" stroke-width="1"/>
+    <line x1="76" y1="58" x2="76" y2="82" stroke="#00FFFF" stroke-width="1"/>
+    <circle cx="76" cy="82" r="2.5" fill="#00FFFF"/>
+    <line x1="28" y1="142" x2="58" y2="142" stroke="#FF6B00" stroke-width="1"/>
+    <circle cx="58" cy="142" r="2.5" fill="#FF6B00"/>
+  </g>
+  <!-- circuit deco right -->
+  <g opacity="0.22" filter="url(#glowSm)">
+    <line x1="872" y1="58" x2="824" y2="58" stroke="#FF6B00" stroke-width="1"/>
+    <line x1="824" y1="58" x2="824" y2="82" stroke="#FF6B00" stroke-width="1"/>
+    <circle cx="824" cy="82" r="2.5" fill="#FF6B00"/>
+    <line x1="872" y1="142" x2="842" y2="142" stroke="#00FFFF" stroke-width="1"/>
+    <circle cx="842" cy="142" r="2.5" fill="#00FFFF"/>
+  </g>
+
+  <!-- floating particles -->
+  <circle cx="140" cy="38" r="2" fill="#00FFFF" filter="url(#glowSm)">
+    <animate attributeName="cy" values="38;26;38" dur="3.2s" repeatCount="indefinite"/>
+    <animate attributeName="opacity" values="1;.2;1" dur="3.2s" repeatCount="indefinite"/>
+  </circle>
+  <circle cx="760" cy="162" r="2" fill="#FF6B00" filter="url(#glowSm)">
+    <animate attributeName="cy" values="162;150;162" dur="4s" repeatCount="indefinite"/>
+    <animate attributeName="opacity" values="1;.2;1" dur="4s" repeatCount="indefinite"/>
+  </circle>
+  <circle cx="450" cy="18" r="1.5" fill="#FFFFFF">
+    <animate attributeName="cy" values="18;10;18" dur="2.8s" repeatCount="indefinite"/>
+    <animate attributeName="opacity" values=".6;1;.6" dur="2.8s" repeatCount="indefinite"/>
+  </circle>
+  <circle cx="200" cy="175" r="1.5" fill="#FF6B00" filter="url(#glowSm)">
+    <animate attributeName="cy" values="175;165;175" dur="3.6s" repeatCount="indefinite"/>
+    <animate attributeName="opacity" values=".6;1;.6" dur="3.6s" repeatCount="indefinite"/>
+  </circle>
+  <circle cx="700" cy="35" r="1.5" fill="#00FFFF" filter="url(#glowSm)">
+    <animate attributeName="cy" values="35;25;35" dur="4.2s" repeatCount="indefinite"/>
+    <animate attributeName="opacity" values=".6;1;.6" dur="4.2s" repeatCount="indefinite"/>
+  </circle>
+
+  <!-- SYS label -->
+  <text x="450" y="27" text-anchor="middle" font-family="'Courier New',monospace" font-size="9" letter-spacing="5" fill="rgba(255,255,255,0.3)">
+    [ SYS // ONLINE // READY ]
+  </text>
+
+  <!-- MAIN NAME — gradient + glow -->
+  <text x="450" y="100" text-anchor="middle"
+        font-family="'Courier New',monospace"
+        font-size="68" font-weight="900"
+        fill="url(#nameGrad)"
+        filter="url(#glow)"
+        letter-spacing="10">
+    PAVITHRA
+    <animate attributeName="opacity" values=".88;1;.92;1;.88" dur="5s" repeatCount="indefinite"/>
+  </text>
+
+  <!-- ROLE row: cyan · white · orange -->
+  <text x="450" y="128" text-anchor="middle" font-family="'Courier New',monospace" font-size="11" letter-spacing="4">
+    <tspan fill="#00FFFF">FULL STACK DEV</tspan>
+    <tspan fill="rgba(255,255,255,0.4)">  ·  </tspan>
+    <tspan fill="#FFFFFF">AI BUILDER</tspan>
+    <tspan fill="rgba(255,255,255,0.4)">  ·  </tspan>
+    <tspan fill="#FF6B00">BOT ENGINEER</tspan>
+    <animate attributeName="opacity" values=".7;1;.7" dur="3s" repeatCount="indefinite"/>
+  </text>
+
+  <!-- divider line -->
+  <rect x="220" y="140" width="460" height="1" fill="url(#divGrad)" opacity="0.6">
+    <animate attributeName="width" values="460;520;460" dur="4s" repeatCount="indefinite"/>
+    <animate attributeName="x" values="220;190;220" dur="4s" repeatCount="indefinite"/>
+  </rect>
+
+  <!-- tags -->
+  <text x="450" y="160" text-anchor="middle" font-family="'Courier New',monospace" font-size="9" fill="rgba(255,255,255,0.28)" letter-spacing="2">
+    React · Node.js · Python · Groq · Supabase · Gemini API · Git
+  </text>
+
+  <!-- github handle -->
+  <text x="450" y="184" text-anchor="middle" font-family="'Courier New',monospace" font-size="8" fill="rgba(255,255,255,0.2)" letter-spacing="3">
+    github.com/pavithra656
+  </text>
+</svg>
